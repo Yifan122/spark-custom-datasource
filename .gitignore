@@ -1,0 +1,6 @@
+/out/
+/spark-warehouse/
+/.idea/
+/target/
+/spark-custom-datasource.iml
+.gitignore

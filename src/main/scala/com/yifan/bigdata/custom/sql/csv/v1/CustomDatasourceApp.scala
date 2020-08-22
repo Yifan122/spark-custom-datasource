@@ -1,4 +1,4 @@
-package com.yifan.bigdata
+package com.yifan.bigdata.custom.sql.csv.v1
 
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{SaveMode, SparkSession}

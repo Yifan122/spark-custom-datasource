@@ -1,4 +1,4 @@
-package com.yifan.bigdata.custom.sql.csv.v1
+package com.yifan.bigdata
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}

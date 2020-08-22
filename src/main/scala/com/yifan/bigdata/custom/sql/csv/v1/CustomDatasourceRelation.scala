@@ -1,4 +1,4 @@
-package com.yifan.bigdata.custom.sql.csv
+package com.yifan.bigdata.custom.sql.csv.v1
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.sources._

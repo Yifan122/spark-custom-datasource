@@ -8,7 +8,7 @@ object CustomDatasourceApp extends App {
   val conf = new SparkConf().setAppName("spark-custom-datasource")
   val spark = SparkSession.builder().config(conf).master("local").getOrCreate()
 
-  val df = spark.read.format("com.yifan.bigdata.custom.sql.csv").load("data/")
+  val df = spark.read.format("com.yifan.bigdata.custom.sql.csv.v1").load("data/")
 
   // Step 1 (Schema verification)
   df.printSchema()
@@ -18,7 +18,7 @@ object CustomDatasourceApp extends App {
   df.write
     .options(Map("format" -> "customFormat"))
     .mode(SaveMode.Overwrite)
-    .format("com.yifan.bigdata.custom.sql.csv")
+    .format("com.yifan.bigdata.custom.sql.csv.v1")
     .save("out/")
   // Step 4 (Column Pruning)
   df.createOrReplaceTempView("salaries")

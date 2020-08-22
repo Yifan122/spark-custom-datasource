@@ -2,9 +2,9 @@ package com.yifan.bigdata.custom.sql.csv.v2
 
 import java.util
 
+import org.apache.spark.sql.Row
 import org.apache.spark.sql.sources.v2.reader._
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
-import org.apache.spark.sql.{Row, SparkSession}
 
 import scala.io.Source
 
@@ -46,23 +46,6 @@ class CSVDataReader(path: String) extends DataReader[Row] {
   }
 
   override def close(): Unit = {
-
-  }
-}
-
-object CSVExample {
-  def main(args: Array[String]): Unit = {
-    val spark = SparkSession
-      .builder()
-      .master("local[2]")
-      .getOrCreate()
-
-    val df = spark.read
-      .format("com.yifan.bigdata.custom.sql.csv.v2")
-      .option("path", "data/student.csv")
-      .load()
-
-    df.show()
 
   }
 }

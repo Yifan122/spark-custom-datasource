@@ -8,20 +8,15 @@ import org.apache.spark.sql.{Row, SparkSession}
 
 import scala.io.Source
 
-object CSVSourceV2 {
+class CSVDataSourceReader(path: String) extends DataSourceReader {
   val schema = StructType(
     StructField("name", StringType, nullable = true) ::
       StructField("surname", StringType, nullable = true) ::
       StructField("salary", IntegerType, nullable = true) ::
       Nil
   )
-}
 
-
-class CSVDataSourceReader(path: String) extends DataSourceReader {
-  val requiredSchema = CSVSourceV2.schema
-
-  override def readSchema(): StructType = requiredSchema
+  override def readSchema(): StructType = schema
 
   override def createDataReaderFactories(): util.List[DataReaderFactory[Row]] = {
     val list = new util.ArrayList[DataReaderFactory[Row]]()

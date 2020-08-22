@@ -1,5 +1,7 @@
 package com.yifan.bigdata.custom.sql.csv.v2
 
+import java.util
+
 import org.apache.spark.sql.sources.v2.reader._
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
 import org.apache.spark.sql.{Row, SparkSession}
@@ -15,6 +17,19 @@ object CSVSourceV2 {
   )
 }
 
+
+class CSVDataSourceReader(path: String) extends DataSourceReader {
+  val requiredSchema = CSVSourceV2.schema
+
+  override def readSchema(): StructType = requiredSchema
+
+  override def createDataReaderFactories(): util.List[DataReaderFactory[Row]] = {
+    val list = new util.ArrayList[DataReaderFactory[Row]]()
+    list.add(new CSVDataReaderFactory(path))
+
+    list
+  }
+}
 
 class CSVDataReaderFactory(path: String) extends DataReaderFactory[Row] {
   override def createDataReader(): DataReader[Row] = new CSVDataReader(path)

@@ -1,0 +1,11 @@
+# execute below commands in hbase shell
+create 'student','f'
+put 'student','1001','f:name','zhangsan'
+put 'student','1001','f:age','14'
+put 'student','1001','f:major','math'
+put 'student','1002','f:name','lisi'
+put 'student','1002','f:age','18'
+put 'student','1002','f:major','cs'
+put 'student','1003','f:name','wangwu'
+put 'student','1003','f:age','19'
+put 'student','1003','f:major','ME'
